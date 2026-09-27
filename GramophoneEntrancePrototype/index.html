@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Gramophone · Entrance study</title><link rel="stylesheet" href="style.css"><script src="animation.js" defer></script></head>
+<body>
+<main>
+<header><div><p class="eyebrow">MECHANICS ONLY / 001</p><h1>A little entrance.</h1></div><span class="badge">SVG motion study</span></header>
+<section class="stage" aria-label="Gramophone animation stage">
+<svg id="scene" viewBox="100 -60 1100 1380" role="img" aria-labelledby="scene-title scene-description">
+<title id="scene-title">Papercraft gramophone entrance</title><desc id="scene-description">A jointed gramophone walks in, sits, opens its pocket and holds up a vinyl disc.</desc>
+<defs><clipPath id="stage-bounds"><rect x="100" y="-60" width="1100" height="1380"/></clipPath><radialGradient id="ground-shadow"><stop stop-color="#56422c" stop-opacity=".2"/><stop offset="1" stop-color="#56422c" stop-opacity="0"/></radialGradient></defs>
+<path d="M-1000 1155H2200" stroke="#cfc6b8" stroke-width="2"/>
+<g id="gramophone-character" data-part="gramophone-character" clip-path="url(#stage-bounds)"><g id="locomotion-root" data-part="locomotion-root" transform="translate(-1000 0)">
+<ellipse cx="600" cy="1145" rx="380" ry="34" fill="url(#ground-shadow)"/>
+<g id="body-root" data-part="body-root">
+<g id="left-leg" data-part="left-leg"><g id="left-thigh"><image href="assets-redesigned/left-thigh.svg" x="411" y="864" width="108" height="209"/></g><g id="left-shin"><image href="assets-redesigned/left-shin.svg" x="411" y="864" width="108" height="209"/></g></g><g id="left-foot" data-part="left-foot"><image href="assets-redesigned/left-foot.svg" x="333" y="1010" width="192" height="142"/></g><g id="right-leg" data-part="right-leg"><g id="right-thigh"><image href="assets-redesigned/right-thigh.svg" x="591" y="893" width="137" height="193"/></g><g id="right-shin"><image href="assets-redesigned/right-shin.svg" x="591" y="893" width="137" height="193"/></g></g><g id="right-foot" data-part="right-foot"><image href="assets-redesigned/right-foot.svg" x="593" y="1020" width="192" height="142"/></g>
+<g id="left-arm" data-part="left-arm"><image href="assets-redesigned/left-arm.svg" x="254" y="680" width="163" height="227"/></g>
+<g data-part="cabinet"><image href="assets-redesigned/body.svg" x="353" y="628" width="425" height="328"/></g>
+<g id="horn-root" data-part="horn-root"><image href="assets-redesigned/horn.svg" x="355" y="55" width="505" height="605"/></g>
+<g id="pocket-root" data-part="pocket-root">
+<path d="M685 787L737 801 712 951 664 934Z" transform="matrix(2.5 0 0 1 -1027.5 0)" fill="#291e17" stroke="#bc8844" stroke-width="5"/>
+<g id="disc-prop" data-part="disc-prop" visibility="hidden"><image href="assets-redesigned/disc.svg" x="-70" y="-70" width="140" height="140"/></g>
+<g data-part="pocket-front" transform="matrix(2.5 0 0 1 -1027.5 0)"><image href="assets-redesigned/pocket-front.svg" x="655" y="775" width="98" height="190"/></g>
+<g id="pocket-flap" data-part="pocket-flap"><g transform="matrix(2.5 0 0 1 -1027.5 0)"><image href="assets-redesigned/pocket-flap.svg" x="655" y="775" width="98" height="80"/></g></g>
+</g>
+<g id="right-arm" data-part="right-arm"><image href="assets-redesigned/right-upper.svg" x="701" y="750" width="157" height="99"/><g id="right-forearm" data-part="right-forearm"><image href="assets-redesigned/right-forearm.svg" x="763" y="575" width="95" height="274"/></g></g>
+</g></g></g>
+</svg>
+<div class="stage-caption"><span id="phase" role="status" aria-live="polite">Ready · offstage</span><span id="elapsed">0.00 / 4.90 s</span></div>
+<div class="timeline" aria-hidden="true"><div id="progress"></div></div>
+</section>
+<nav aria-label="Motion controls">
+<button type="button" class="primary" data-action="full">Play Full Sequence <span aria-hidden="true">↗</span></button>
+<button type="button" data-action="reset">Reset</button>
+<div class="divider" aria-hidden="true"></div>
+<button type="button" data-action="walk">Walk</button><button type="button" data-action="sit">Sit</button><button type="button" data-action="pull">Pull Disc</button>
+</nav>
+<footer><span>Walk → settle → sit → pocket → hold</span><span>No sound. No game logic. Just movement.</span></footer>
+</main>
+</body></html>

@@ -1,0 +1,25 @@
+:root { color-scheme: light; font-family: "Segoe UI", system-ui, sans-serif; color: #3b352e; background: #ede9e1; }
+* { box-sizing: border-box; }
+body { margin: 0; padding: 24px; }
+main { max-width: 1120px; margin: 0 auto; }
+header { display: flex; align-items: center; justify-content: space-between; gap: 16px; margin-bottom: 18px; }
+.eyebrow { font-size: 10px; letter-spacing: .19em; color: #827565; margin: 0 0 6px; }
+h1 { font-family: Georgia, serif; font-size: 30px; font-weight: normal; margin: 0; }
+.badge { font-size: 11px; padding: 8px 12px; border: 1px solid #cec5b8; border-radius: 20px; }
+.stage { position: relative; overflow: hidden; border-radius: 18px; border: 1px solid #d7cebf; background: radial-gradient(ellipse at 57% 40%, #fcfaf4, #e3ddd2); }
+#scene { display: block; width: 100%; height: min(70vh, 700px); min-height: 340px; overflow: hidden; }
+.stage-caption { display: flex; justify-content: space-between; gap: 12px; padding: 12px 20px; color: #726555; font-size: 12px; font-variant-numeric: tabular-nums; }
+.timeline { height: 3px; background: #d9d0c1; }
+#progress { height: 100%; width: 0; background: #9b6b32; }
+nav { display: flex; align-items: center; gap: 8px; margin: 18px 0; flex-wrap: wrap; }
+button { font: inherit; font-size: 13px; border: 1px solid #cbc1b1; border-radius: 9px; padding: 12px 17px; background: #f8f5ee; color: #443b30; cursor: pointer; }
+button:hover { background: #e2d5c2; }
+button:active { transform: translateY(1px); }
+button:focus-visible { outline: 3px solid #b48236; outline-offset: 3px; }
+button.primary { background: #40382d; color: #fff8e7; border-color: #40382d; }
+button.primary:hover { background: #66503a; }
+.primary span { margin-left: 20px; }
+.divider { width: 1px; height: 23px; background: #ccc1b1; margin: 0 6px; }
+footer { display: flex; justify-content: space-between; gap: 10px; color: #84796b; font-size: 11px; }
+@media (max-width: 560px) { body { padding: 14px; } h1 { font-size: 25px; } .badge { display: none; } #scene { height: 62vh; } footer { flex-direction: column; } button { padding: 11px 13px; } .divider { display: none; } }
+

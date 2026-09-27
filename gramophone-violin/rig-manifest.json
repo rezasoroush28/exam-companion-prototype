@@ -1,0 +1,331 @@
+{
+  "formatVersion": 1,
+  "name": "The Little Virtuoso",
+  "style": "Layered paper, honey brass, walnut cabinet, amber violin",
+  "coordinates": {
+    "masterViewBox": "180 0 880 1200",
+    "axes": "SVG +x right, +y down; degrees clockwise",
+    "units": "SVG user units",
+    "assetPlacement": "Inline art groups preserve native coordinates; do not size every asset to the master viewBox. External SVG images need the asset viewBox minimum and dimensions as x/y/width/height.",
+    "previewViewBox": "70 -20 1080 1250"
+  },
+  "parts": [
+    {
+      "file": "assets/body.svg",
+      "id": "body",
+      "viewBox": "353 628 425 328",
+      "pivot": [
+        556,
+        787
+      ],
+      "childJoint": null
+    },
+    {
+      "file": "assets/horn.svg",
+      "id": "horn",
+      "viewBox": "355 55 505 605",
+      "pivot": [
+        451,
+        625
+      ],
+      "childJoint": null
+    },
+    {
+      "file": "assets/left-upper.svg",
+      "id": "left-upper",
+      "viewBox": "-26 -28 187 56",
+      "pivot": [
+        0,
+        0
+      ],
+      "childJoint": [
+        135,
+        0
+      ]
+    },
+    {
+      "file": "assets/left-forearm.svg",
+      "id": "left-forearm",
+      "viewBox": "-26 -28 192 56",
+      "pivot": [
+        0,
+        0
+      ],
+      "childJoint": [
+        140,
+        0
+      ]
+    },
+    {
+      "file": "assets/left-thigh.svg",
+      "id": "left-thigh",
+      "viewBox": "-26 -28 166 56",
+      "pivot": [
+        0,
+        0
+      ],
+      "childJoint": [
+        114,
+        0
+      ]
+    },
+    {
+      "file": "assets/left-shin.svg",
+      "id": "left-shin",
+      "viewBox": "-26 -28 164 56",
+      "pivot": [
+        0,
+        0
+      ],
+      "childJoint": [
+        112,
+        0
+      ]
+    },
+    {
+      "file": "assets/left-hand.svg",
+      "id": "left-hand",
+      "viewBox": "-22 -28 52 60",
+      "pivot": [
+        0,
+        0
+      ],
+      "childJoint": null
+    },
+    {
+      "file": "assets/left-foot.svg",
+      "id": "left-foot",
+      "viewBox": "-55 -25 123 64",
+      "pivot": [
+        0,
+        0
+      ],
+      "childJoint": null
+    },
+    {
+      "file": "assets/right-upper.svg",
+      "id": "right-upper",
+      "viewBox": "-26 -28 187 56",
+      "pivot": [
+        0,
+        0
+      ],
+      "childJoint": [
+        135,
+        0
+      ]
+    },
+    {
+      "file": "assets/right-forearm.svg",
+      "id": "right-forearm",
+      "viewBox": "-26 -28 192 56",
+      "pivot": [
+        0,
+        0
+      ],
+      "childJoint": [
+        140,
+        0
+      ]
+    },
+    {
+      "file": "assets/right-thigh.svg",
+      "id": "right-thigh",
+      "viewBox": "-26 -28 166 56",
+      "pivot": [
+        0,
+        0
+      ],
+      "childJoint": [
+        114,
+        0
+      ]
+    },
+    {
+      "file": "assets/right-shin.svg",
+      "id": "right-shin",
+      "viewBox": "-26 -28 164 56",
+      "pivot": [
+        0,
+        0
+      ],
+      "childJoint": [
+        112,
+        0
+      ]
+    },
+    {
+      "file": "assets/right-hand.svg",
+      "id": "right-hand",
+      "viewBox": "-22 -28 52 60",
+      "pivot": [
+        0,
+        0
+      ],
+      "childJoint": null
+    },
+    {
+      "file": "assets/right-foot.svg",
+      "id": "right-foot",
+      "viewBox": "-55 -25 123 64",
+      "pivot": [
+        0,
+        0
+      ],
+      "childJoint": null
+    },
+    {
+      "file": "assets/violin.svg",
+      "id": "violin",
+      "viewBox": "-116 -95 417 194",
+      "pivot": [
+        0,
+        0
+      ],
+      "childJoint": [
+        208,
+        0
+      ]
+    },
+    {
+      "file": "assets/bow.svg",
+      "id": "bow",
+      "viewBox": "-211 -14 405 42",
+      "pivot": [
+        0,
+        10
+      ],
+      "childJoint": [
+        143,
+        10
+      ]
+    },
+    {
+      "file": "assets/left-fingers.svg",
+      "id": "left-fingers",
+      "viewBox": "-24 -20 60 43",
+      "pivot": [
+        0,
+        0
+      ],
+      "childJoint": null
+    }
+  ],
+  "rig": {
+    "legLengths": [
+      114,
+      112
+    ],
+    "armLengths": [
+      135,
+      140
+    ],
+    "shoulders": {
+      "left": [
+        729,
+        783
+      ],
+      "right": [
+        414,
+        760
+      ]
+    },
+    "hips": {
+      "left": [
+        649,
+        931
+      ],
+      "right": [
+        442,
+        891
+      ]
+    },
+    "anklesReady": {
+      "left": [
+        675,
+        1120
+      ],
+      "right": [
+        430,
+        1120
+      ]
+    },
+    "violinBridge": [
+      0,
+      0
+    ],
+    "violinNeckGrip": [
+      208,
+      0
+    ],
+    "bowHairY": 10,
+    "bowGrip": [
+      143,
+      10
+    ],
+    "anatomicalLeft": "viewer right",
+    "anatomicalRight": "viewer left",
+    "hornPivot": [
+      451,
+      625
+    ],
+    "bodyPivot": [
+      556,
+      787
+    ],
+    "paintOrder": [
+      "legs",
+      "horn",
+      "cabinet",
+      "left arm",
+      "right arm",
+      "violin",
+      "left hand",
+      "left fingers",
+      "bow",
+      "right hand"
+    ]
+  },
+  "clips": {
+    "entrance": {
+      "duration": 4.8,
+      "segments": [
+        [
+          0,
+          2.8,
+          "walk in, carry violin vertically"
+        ],
+        [
+          2.8,
+          3.2,
+          "plant and settle"
+        ],
+        [
+          3.2,
+          4.8,
+          "raise violin and place bow"
+        ]
+      ]
+    },
+    "short": {
+      "duration": 1.7,
+      "description": "one compact bow stroke, a small recoil, return to ready"
+    },
+    "long": {
+      "duration": 8,
+      "description": "four broad alternating bow cycles, finger articulation and gentle phrasing; seamless pose loop"
+    },
+    "full": {
+      "duration": 15.3,
+      "description": "entrance + short note + 0.8s pause + long phrase"
+    }
+  },
+  "contactRules": [
+    "Left wrist follows the transformed violin neck grip.",
+    "Right wrist follows transformed bow grip.",
+    "While playing, bow hair crosses the bridge at every frame.",
+    "Solve arm elbows using two-bone IK; never independently tween the hands and props.",
+    "All arm, hand and prop transforms live under torso-root."
+  ],
+  "runtime": "Vanilla JavaScript; requestAnimationFrame; no external libraries or network requests."
+}

@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="100 20 1050 1180">
+<title>Editable papercraft gramophone — body</title>
+<g id="art">
+<defs><linearGradient id="wood" x2=".9" y2="1"><stop stop-color="#b68450"/><stop offset=".5" stop-color="#80502e"/><stop offset="1" stop-color="#4b2d20"/></linearGradient><pattern id="fibers" width="48" height="37" patternUnits="userSpaceOnUse"><path d="M2 7q18-6 36 0M9 24l20-3M34 30l8 2" stroke="#f2d298" stroke-width="1" opacity=".18"/></pattern></defs>
+<g id="cabinet"><path d="M390 690L800 750 760 965 350 882Z" fill="url(#wood)" stroke="#4e301d" stroke-width="9"/><path d="M350 882L390 690 445 652 401 859Z" fill="#69452e" stroke="#ad7b49" stroke-width="6"/><path d="M390 690L800 750 760 965 350 882Z" fill="url(#fibers)"/><path d="M439 737L753 784 722 917 409 855Z" fill="#684026" stroke="#d4a357" stroke-width="6"/><path d="M448 748L740 791 714 904 421 847Z" fill="none" stroke="#91632e" stroke-width="2"/><path d="M368 665L488 615 837 693 800 750 375 690Z" fill="#bc8a55" stroke="#e3bb7b" stroke-width="5"/><path d="M375 690L800 750 812 734 380 674Z" fill="#69402a"/><path d="M345 878L772 961 789 979 775 990 335 901Z" fill="#b88450" stroke="#d4a568" stroke-width="5"/>
+<g fill="#d6a14f" stroke="#845327" stroke-width="4"><circle cx="437" cy="732" r="17"/><circle cx="766" cy="790" r="17"/><circle cx="406" cy="858" r="17"/><circle cx="729" cy="918" r="17"/><path d="M564 785q28-35 50 8l30 9q18 12-4 29l-9 32q-20 19-42-1l-35-5q-29-18-4-37Z"/></g><path d="M597 850q-28-6-17-24l24-20q16-22 5-30-16 10-11 42l7 49q-4 14-15 5" fill="none" stroke="#ffe0a0" stroke-width="6" stroke-linecap="round"/></g>
+</g>
+</svg>
+
+

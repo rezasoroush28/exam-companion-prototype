@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-70 -70 140 140" width="140" height="140" role="img" aria-labelledby="disc-title" data-pivot-x="0" data-pivot-y="0">
+<title id="disc-title">Disc — layered paper gramophone</title>
+<defs><linearGradient id="disc-gold" x1="0" y1="0" x2="1" y2="0.6" gradientUnits="objectBoundingBox"><stop stop-color="#F1C568"/><stop offset="0.52" stop-color="#D9A23A"/><stop offset="1" stop-color="#B67E2D"/></linearGradient>
+<linearGradient id="disc-wood" x1="0" y1="0" x2="0.8" y2="1"><stop stop-color="#9A6336"/><stop offset="1" stop-color="#654024"/></linearGradient>
+<linearGradient id="disc-horn-shade" x1="0" y1="0.8" x2="0.9" y2="0.1"><stop stop-color="#72471C"/><stop offset="0.38" stop-color="#AD7529"/><stop offset="0.72" stop-color="#D9A23A"/><stop offset="1" stop-color="#F1C568"/></linearGradient>
+<linearGradient id="disc-shoe" x1="0" y1="0" x2="0.3" y2="1"><stop stop-color="#987050"/><stop offset="1" stop-color="#65452F"/></linearGradient></defs><g id="disc-paper-art">
+<g id="disc-paper-base">
+<ellipse cx="0" cy="0" rx="67" ry="67" fill="#352C22"/><ellipse cx="-2" cy="-2" rx="64" ry="64" fill="#111722" stroke="#A57631" stroke-width="2"/>
+</g><g id="disc-grooves">
+<ellipse cx="-2" cy="-2" rx="59" ry="59" fill="none" stroke="#44434A" stroke-width="0.9"/><ellipse cx="-2" cy="-2" rx="54" ry="54" fill="none" stroke="#44434A" stroke-width="0.9"/><ellipse cx="-2" cy="-2" rx="49" ry="49" fill="none" stroke="#44434A" stroke-width="0.9"/><ellipse cx="-2" cy="-2" rx="44" ry="44" fill="none" stroke="#44434A" stroke-width="0.9"/><ellipse cx="-2" cy="-2" rx="39" ry="39" fill="none" stroke="#44434A" stroke-width="0.9"/><ellipse cx="-2" cy="-2" rx="34" ry="34" fill="none" stroke="#44434A" stroke-width="0.9"/>
+</g><g id="disc-label">
+<ellipse cx="-2" cy="-2" rx="22" ry="22" fill="url(#disc-gold)"/><ellipse cx="-2" cy="-2" rx="16" ry="16" fill="none" stroke="#F1C568" stroke-width="1"/><ellipse cx="-2" cy="-2" rx="5" ry="5" fill="#171B21"/><path d="M-9 -15 L-9 -6 M2 7 L10 7" fill="none" stroke="#8B6027" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round" />
+</g>
+</g><g id="pivot" data-x="0" data-y="0" style="display:none"><ellipse cx="0" cy="0" rx="2" ry="2" fill="#FF00FF"/></g>
+</svg>

@@ -1,0 +1,24 @@
+{
+  "clips": {
+    "entrance": {
+      "maxReachError": 0,
+      "maxBowContactError": 0
+    },
+    "short": {
+      "maxReachError": 0,
+      "maxBowContactError": 1.0391687510491465e-13
+    },
+    "long": {
+      "maxReachError": 0,
+      "maxBowContactError": 1.0347278589506459e-13
+    },
+    "full": {
+      "maxReachError": 0,
+      "maxBowContactError": 1.0125233984581428e-13
+    }
+  },
+  "errors": [],
+  "loopSeamMaxDifference": 4.499279347985573e-32,
+  "loopEndMatches": true,
+  "lifecycle": "passed"
+}

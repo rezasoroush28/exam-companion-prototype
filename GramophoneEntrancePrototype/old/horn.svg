@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="100 20 1050 1180">
+<title>Editable papercraft gramophone — horn</title>
+<g id="art">
+<defs><linearGradient id="gold" x2=".85" y2=".6"><stop stop-color="#ffe3a0"/><stop offset=".45" stop-color="#d89c36"/><stop offset="1" stop-color="#8c551e"/></linearGradient><pattern id="paper" width="33" height="43" patternUnits="userSpaceOnUse"><path d="M2 8l11 5 6-9M8 31l9-4 10 10" fill="none" stroke="#fff0ba" stroke-width="1" opacity=".25"/></pattern></defs>
+<g id="curved-neck"><path d="M478 630C380 609 358 524 429 452L470 477C409 539 424 562 502 587Z" fill="url(#gold)" stroke="#8a5524" stroke-width="7"/><path d="M484 603C405 581 385 531 443 468" fill="none" stroke="#f5cd79" stroke-width="9"/><path d="M415 453L457 415 497 458 459 496Z" fill="#d89f43" stroke="#724521" stroke-width="8"/></g>
+<g id="flower-bell" stroke="#f8d387" stroke-width="5" stroke-linejoin="round">
+<path d="M457 444Q555 366 549 175Q506 111 551 69Q604 21 634 116L612 329Z" fill="#d49b3e"/>
+<path d="M457 444Q614 318 634 116Q618 20 682 32Q763 45 778 134L672 344Z" fill="url(#gold)"/>
+<path d="M457 444L672 344 778 134Q845 89 886 154Q918 197 888 251L749 390Z" fill="#c88b30"/>
+<path d="M457 444L749 390 888 251Q973 267 975 342Q980 380 949 407L803 451Z" fill="#e3ad50"/>
+<path d="M457 444L803 451 949 407Q1000 460 965 507Q943 541 884 524L774 503Z" fill="#e5b461"/>
+<path d="M457 444L774 503 884 524Q901 581 851 590Q799 597 741 550Z" fill="#f1ca7d"/>
+<path d="M457 444Q559 375 549 175Q586 315 676 453Q719 517 851 590Q725 589 644 512Q560 477 482 489Z" fill="url(#gold)"/>
+</g><path d="M549 175Q625 373 741 550" stroke="#ffedb5" stroke-width="10" fill="none"/>
+<path d="M457 444L634 116M457 444L778 134M457 444L888 251M457 444L949 407M457 444L884 524" stroke="#83511d" stroke-width="3" fill="none" opacity=".5"/>
+<path d="M549 175Q506 111 551 69Q604 21 634 116Q618 20 682 32Q763 45 778 134Q845 89 886 154Q918 197 888 251Q973 267 975 342Q980 380 949 407Q1000 460 965 507Q943 541 884 524Q901 581 851 590Q725 589 644 512L457 444Z" fill="url(#paper)"/>
+</g>
+</svg>
+
+

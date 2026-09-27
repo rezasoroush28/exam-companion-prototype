@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="100 20 1050 1180">
+<title>Editable articulated right arm</title>
+<g id="upper" stroke="#855624" stroke-width="6">
+<path d="M786 792L914 830" stroke="#d4a358" stroke-width="28"/>
+<path d="M794 785L908 817" stroke="#ffe0a0" stroke-width="5"/>
+<circle cx="786" cy="792" r="23" fill="#b88134"/>
+</g>
+<g id="forearm" stroke="#855624" stroke-width="6">
+<path d="M914 830L943 711" stroke="#d4a358" stroke-width="28"/>
+<path d="M907 814L933 715" stroke="#ffe0a0" stroke-width="5"/>
+<circle cx="914" cy="830" r="27" fill="#d4a155"/>
+<circle cx="914" cy="830" r="13" fill="#ab7331"/>
+<path d="M925 698q22-24 38 0l-1 32-36 2Z" fill="#d7a45a"/>
+</g>
+<g id="art"><use href="#upper"/><use href="#forearm"/></g>
+</svg>
+

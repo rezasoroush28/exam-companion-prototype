@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="333 1010 192 142" width="192" height="142" role="img" aria-labelledby="left-foot-title" data-pivot-x="449" data-pivot-y="1038">
+<title id="left-foot-title">Left Foot — layered paper gramophone</title>
+<defs><linearGradient id="left-foot-gold" x1="0" y1="0" x2="1" y2="0.6" gradientUnits="objectBoundingBox"><stop stop-color="#F1C568"/><stop offset="0.52" stop-color="#D9A23A"/><stop offset="1" stop-color="#B67E2D"/></linearGradient>
+<linearGradient id="left-foot-wood" x1="0" y1="0" x2="0.8" y2="1"><stop stop-color="#9A6336"/><stop offset="1" stop-color="#654024"/></linearGradient>
+<linearGradient id="left-foot-horn-shade" x1="0" y1="0.8" x2="0.9" y2="0.1"><stop stop-color="#72471C"/><stop offset="0.38" stop-color="#AD7529"/><stop offset="0.72" stop-color="#D9A23A"/><stop offset="1" stop-color="#F1C568"/></linearGradient>
+<linearGradient id="left-foot-shoe" x1="0" y1="0" x2="0.3" y2="1"><stop stop-color="#987050"/><stop offset="1" stop-color="#65452F"/></linearGradient></defs><g id="left-foot-paper-art">
+<g id="left-foot-paper-shadow">
+<ellipse cx="433" cy="1123" rx="88" ry="14" fill="#654326"/>
+</g><g id="left-foot-paper-base">
+<path d="M344 1112 C348 1055 384 1021 430 1025 C481 1025 510 1063 514 1113 Q429 1145 344 1112 Z" fill="url(#left-foot-shoe)" stroke="#543A28" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" />
+</g><g id="left-foot-panels">
+<path d="M365 1119 C364 1072 391 1035 423 1027 M414 1129 C407 1078 419 1048 438 1026 M477 1124 C480 1085 468 1055 448 1030" fill="none" stroke="#B0875C" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" /><path d="M368 1088 C387 1051 417 1035 437 1036" fill="none" stroke="#B38B61" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" />
+</g><g id="left-foot-gold-strap">
+<path d="M414 1026 C449 1015 481 1059 480 1123 L498 1118 C496 1063 466 1015 432 1020 Z" fill="url(#left-foot-gold)" stroke="#A8762C" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round" /><path d="M433 1025 C464 1032 490 1077 489 1117" fill="none" stroke="#F1C568" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" />
+</g><g id="left-foot-sole">
+<path d="M342 1110 Q429 1136 516 1110 L517 1129 Q429 1157 342 1129 Z" fill="url(#left-foot-gold)" stroke="#A8752D" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" /><path d="M345 1113 Q429 1137 512 1113" fill="none" stroke="#F4D183" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" /><path d="M365 1119 L365 1134 M412 1129 L412 1142 M478 1125 L478 1138" fill="none" stroke="#A9762C" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round" />
+</g>
+</g><g id="pivot" data-x="449" data-y="1038" style="display:none"><ellipse cx="449" cy="1038" rx="2" ry="2" fill="#FF00FF"/></g>
+</svg>

@@ -1,0 +1,484 @@
+{
+  "task": "Integrate the supplied gramophone violinist SVG character and its three motions into the existing game.",
+  "role": [
+    "Senior game character technical artist",
+    "Senior frontend animation engineer",
+    "Game UI/UX designer"
+  ],
+  "context": {
+    "character": "The Little Virtuoso: a living paper-craft wooden gramophone carrying a violin in its anatomical left hand and a bow in its right. The flower-shaped brass horn conveys emotion through tilts and follow-through.",
+    "user_intent": "Enter walking with the instrument carried at his side, raise it into playing position, perform either one short note or a longer classical-style phrase with alternating bow strokes.",
+    "deliverable_type": "Editable vector assets plus deterministic browser animation. The included motions are silent. Audio synchronization can be added only where the existing game provides audio.",
+    "source_of_truth": [
+      "assets/*.svg",
+      "gramophone-ready.svg",
+      "gramophone-carrying.svg",
+      "rig-manifest.json",
+      "animation.js",
+      "index.html"
+    ]
+  },
+  "before_editing": [
+    "Read applicable AGENTS.md and existing project instructions. Inspect the current character markup, animation modules and actual game event flow.",
+    "Open index.html and inspect the reference motions and rig-manifest.json. When an image viewer cannot open SVG, render the SVG to PNG; inspect the XML directly for its groups and transforms.",
+    "Reuse the current frontend structure and build pipeline. For Razor Pages keep reusable character markup in the appropriate partial and initialization in the existing client module.",
+    "Identify the real events for character entrance, short feedback and longer performance. Do not invent backend APIs or map a generic event to a new game rule."
+  ],
+  "art_direction": {
+    "palette": {
+      "paper": "#F5F0E4",
+      "walnut": "#80512F",
+      "brass": "#D9A23A",
+      "violin": "#BC652E",
+      "outline": "#593C2B"
+    },
+    "preserve": [
+      "Recognizable cabinet silhouette, turntable, treble-clef emblem and flower horn",
+      "Visible wood facets, paper folds and joint discs",
+      "Violin outline, four strings, bridge, f-holes, chinrest and scroll",
+      "Thin bow with a distinct stick and hair"
+    ],
+    "composition": [
+      "Keep violin readable across the cabinet in the ready pose.",
+      "Keep both wrists visible around the neck and bow frog.",
+      "The bow can overlap the violin but must remain visually separate.",
+      "Use an appropriate stage viewport and safe margins so the horn, bow tip and feet are not accidentally clipped.",
+      "Use horn inclination, settling and restrained sway for personality. Avoid oversized squash/stretch on rigid wooden parts."
+    ]
+  },
+  "assets": [
+    {
+      "file": "assets/body.svg",
+      "id": "body",
+      "viewBox": "353 628 425 328",
+      "pivot": [
+        556,
+        787
+      ],
+      "childJoint": null
+    },
+    {
+      "file": "assets/horn.svg",
+      "id": "horn",
+      "viewBox": "355 55 505 605",
+      "pivot": [
+        451,
+        625
+      ],
+      "childJoint": null
+    },
+    {
+      "file": "assets/left-upper.svg",
+      "id": "left-upper",
+      "viewBox": "-26 -28 187 56",
+      "pivot": [
+        0,
+        0
+      ],
+      "childJoint": [
+        135,
+        0
+      ]
+    },
+    {
+      "file": "assets/left-forearm.svg",
+      "id": "left-forearm",
+      "viewBox": "-26 -28 192 56",
+      "pivot": [
+        0,
+        0
+      ],
+      "childJoint": [
+        140,
+        0
+      ]
+    },
+    {
+      "file": "assets/left-thigh.svg",
+      "id": "left-thigh",
+      "viewBox": "-26 -28 166 56",
+      "pivot": [
+        0,
+        0
+      ],
+      "childJoint": [
+        114,
+        0
+      ]
+    },
+    {
+      "file": "assets/left-shin.svg",
+      "id": "left-shin",
+      "viewBox": "-26 -28 164 56",
+      "pivot": [
+        0,
+        0
+      ],
+      "childJoint": [
+        112,
+        0
+      ]
+    },
+    {
+      "file": "assets/left-hand.svg",
+      "id": "left-hand",
+      "viewBox": "-22 -28 52 60",
+      "pivot": [
+        0,
+        0
+      ],
+      "childJoint": null
+    },
+    {
+      "file": "assets/left-foot.svg",
+      "id": "left-foot",
+      "viewBox": "-55 -25 123 64",
+      "pivot": [
+        0,
+        0
+      ],
+      "childJoint": null
+    },
+    {
+      "file": "assets/right-upper.svg",
+      "id": "right-upper",
+      "viewBox": "-26 -28 187 56",
+      "pivot": [
+        0,
+        0
+      ],
+      "childJoint": [
+        135,
+        0
+      ]
+    },
+    {
+      "file": "assets/right-forearm.svg",
+      "id": "right-forearm",
+      "viewBox": "-26 -28 192 56",
+      "pivot": [
+        0,
+        0
+      ],
+      "childJoint": [
+        140,
+        0
+      ]
+    },
+    {
+      "file": "assets/right-thigh.svg",
+      "id": "right-thigh",
+      "viewBox": "-26 -28 166 56",
+      "pivot": [
+        0,
+        0
+      ],
+      "childJoint": [
+        114,
+        0
+      ]
+    },
+    {
+      "file": "assets/right-shin.svg",
+      "id": "right-shin",
+      "viewBox": "-26 -28 164 56",
+      "pivot": [
+        0,
+        0
+      ],
+      "childJoint": [
+        112,
+        0
+      ]
+    },
+    {
+      "file": "assets/right-hand.svg",
+      "id": "right-hand",
+      "viewBox": "-22 -28 52 60",
+      "pivot": [
+        0,
+        0
+      ],
+      "childJoint": null
+    },
+    {
+      "file": "assets/right-foot.svg",
+      "id": "right-foot",
+      "viewBox": "-55 -25 123 64",
+      "pivot": [
+        0,
+        0
+      ],
+      "childJoint": null
+    },
+    {
+      "file": "assets/violin.svg",
+      "id": "violin",
+      "viewBox": "-116 -95 417 194",
+      "pivot": [
+        0,
+        0
+      ],
+      "childJoint": [
+        208,
+        0
+      ]
+    },
+    {
+      "file": "assets/bow.svg",
+      "id": "bow",
+      "viewBox": "-211 -14 405 42",
+      "pivot": [
+        0,
+        10
+      ],
+      "childJoint": [
+        143,
+        10
+      ]
+    },
+    {
+      "file": "assets/left-fingers.svg",
+      "id": "left-fingers",
+      "viewBox": "-24 -20 60 43",
+      "pivot": [
+        0,
+        0
+      ],
+      "childJoint": null
+    }
+  ],
+  "rig_specification": {
+    "legLengths": [
+      114,
+      112
+    ],
+    "armLengths": [
+      135,
+      140
+    ],
+    "shoulders": {
+      "left": [
+        729,
+        783
+      ],
+      "right": [
+        414,
+        760
+      ]
+    },
+    "hips": {
+      "left": [
+        649,
+        931
+      ],
+      "right": [
+        442,
+        891
+      ]
+    },
+    "anklesReady": {
+      "left": [
+        675,
+        1120
+      ],
+      "right": [
+        430,
+        1120
+      ]
+    },
+    "violinBridge": [
+      0,
+      0
+    ],
+    "violinNeckGrip": [
+      208,
+      0
+    ],
+    "bowHairY": 10,
+    "bowGrip": [
+      143,
+      10
+    ],
+    "anatomicalLeft": "viewer right",
+    "anatomicalRight": "viewer left",
+    "hornPivot": [
+      451,
+      625
+    ],
+    "bodyPivot": [
+      556,
+      787
+    ],
+    "paintOrder": [
+      "legs",
+      "horn",
+      "cabinet",
+      "left arm",
+      "right arm",
+      "violin",
+      "left hand",
+      "left fingers",
+      "bow",
+      "right hand"
+    ]
+  },
+  "coordinate_rules": {
+    "masterViewBox": "180 0 880 1200",
+    "axes": "SVG +x right, +y down; degrees clockwise",
+    "units": "SVG user units",
+    "assetPlacement": "Inline art groups preserve native coordinates; do not size every asset to the master viewBox. External SVG images need the asset viewBox minimum and dimensions as x/y/width/height.",
+    "previewViewBox": "70 -20 1080 1250"
+  },
+  "contact_constraints": [
+    "Left wrist follows the transformed violin neck grip.",
+    "Right wrist follows transformed bow grip.",
+    "While playing, bow hair crosses the bridge at every frame.",
+    "Solve arm elbows using two-bone IK; never independently tween the hands and props.",
+    "All arm, hand and prop transforms live under torso-root."
+  ],
+  "important_asset_notes": [
+    "The left/right names are anatomical: left is on the viewer’s right in the ready pose.",
+    "Upper arms and forearms use local +X coordinates from the parent joint. Upper arm length is 135 and forearm length is 140.",
+    "Thigh and shin segments use local +X coordinates, with lengths 114 and 112.",
+    "violin.svg has its bridge at local [0,0], neck toward +X and neck grip at [208,0]. Rotate and translate the whole prop, then derive the left hand from that transform.",
+    "bow.svg has hair at local y=10 and the grip at [143,10]. During playing, translate along the bow axis while keeping its hair line through the violin bridge.",
+    "left-fingers.svg contains finger-1, finger-2 and finger-3. Small finger lifts are cosmetic and must not move the entire grip.",
+    "body.svg and horn.svg retain the original artwork coordinate systems. Their viewBoxes do not begin at [0,0].",
+    "gramophone-ready.svg and gramophone-carrying.svg are self-contained posed assemblies. The individual files are editable vector parts, not independent animation engines.",
+    "The demo uses inline SVG groups and <use> references. To manipulate internals in a game, embed the SVG inline instead of treating the entire character as an <img>. Prefix IDs and all href/url references when multiple character instances appear on one page."
+  ],
+  "animation_clips": {
+    "entrance": {
+      "duration": 4.8,
+      "segments": [
+        [
+          0,
+          2.8,
+          "walk in, carry violin vertically"
+        ],
+        [
+          2.8,
+          3.2,
+          "plant and settle"
+        ],
+        [
+          3.2,
+          4.8,
+          "raise violin and place bow"
+        ]
+      ]
+    },
+    "short": {
+      "duration": 1.7,
+      "description": "one compact bow stroke, a small recoil, return to ready"
+    },
+    "long": {
+      "duration": 8,
+      "description": "four broad alternating bow cycles, finger articulation and gentle phrasing; seamless pose loop"
+    },
+    "full": {
+      "duration": 15.3,
+      "description": "entrance + short note + 0.8s pause + long phrase"
+    }
+  },
+  "motion_details": {
+    "entrance": {
+      "carry": "Violin bridge [798,972], angle -88 degrees. The bow is held upright at the viewer-left side. Left wrist follows the neck, right wrist follows the bow grip.",
+      "timing": "0–2.8s walking; 2.8–3.2s settle; 3.2–4.8s raise and prepare.",
+      "ready": "Violin bridge [551,735], angle -16 degrees; bow angle 74 degrees.",
+      "leg_motion": "Use alternating stance and swing, small knee bends and foot lift. Root movement should match the stance speed as closely as the existing stage allows. Avoid visible skating.",
+      "secondary_motion": "Small cabinet bob, delayed horn tilt, a gentle settle before raising the violin."
+    },
+    "short": {
+      "length_seconds": 1.7,
+      "gesture": "One compact bow gesture and release. The preview uses a compact stroke followed by a recovery to the ready pose.",
+      "bow_travel": "Up to a nominal 38 units shaped by a smooth envelope.",
+      "finish": "Return all relevant transforms to the shared ready pose."
+    },
+    "long": {
+      "length_seconds": 8,
+      "gesture": "Four alternating bow cycles with a two-second period; larger strokes through the middle of the phrase.",
+      "bow_travel": "Nominal amplitude 76 units, with a phrase envelope.",
+      "secondary_motion": "Gentle cabinet sway and horn follow-through, with small left finger lifts.",
+      "loop": "Start and end at the same ready pose. The cyclic bow velocity matches across the loop. Use a short envelope if starting from a completely still pose requires a softer launch.",
+      "musical_limit": "This is stylized performance motion. Finger and bow patterns are not a transcription of a specific piece."
+    }
+  },
+  "integration": {
+    "preferred_approach": "Adapt the supplied dependency-free requestAnimationFrame rig to the project’s existing animation layer. Do not add a second ticker if the project already has a central animation clock.",
+    "existing_api": {
+      "constructor": "new GramophoneViolinPlayer(svgElement, { onUpdate, onComplete })",
+      "commands": [
+        "play(\"entrance\")",
+        "play(\"short\")",
+        "play(\"long\")",
+        "play(\"full\")",
+        "pause()",
+        "resume()",
+        "seek(seconds)",
+        "ready()",
+        "destroy()"
+      ],
+      "properties": [
+        "rate: positive playback speed",
+        "loop: loops the long clip",
+        "reduced: reduced-motion mode"
+      ],
+      "events": [
+        "gramophone:clipstart with detail.clip",
+        "gramophone:clipcomplete with detail.clip"
+      ]
+    },
+    "recommended_game_states": [
+      "offstage",
+      "entering",
+      "ready",
+      "playing-short",
+      "playing-long",
+      "paused",
+      "disposed"
+    ],
+    "trigger_behavior": [
+      "Entrance runs once when the intended game section becomes visible.",
+      "If a play request arrives during entrance, queue or coalesce it until the ready pose.",
+      "A short request plays once and returns to ready.",
+      "Long performance may loop while the actual game state requests it; stop at the phrase boundary when practical.",
+      "Rapid repeated triggers must not create overlapping tickers.",
+      "Restore or dispose animations according to the actual page/component lifecycle."
+    ],
+    "ux": [
+      "Do not autoplay audio.",
+      "For decorative use set aria-hidden=true; for meaningful status provide concise text outside the SVG.",
+      "Respect prefers-reduced-motion with a static ready pose or minimal transition.",
+      "Keep the game’s current quiz flow, input behavior, scoring and data contracts intact.",
+      "Keep motion controls in a development preview; only expose controls in the game if they serve the player.",
+      "Pause when hidden and avoid unnecessary frame updates while idle."
+    ],
+    "rendering": [
+      "Use SVG transform attributes on joint groups for deterministic pivots.",
+      "Use the two-bone IK solver for both arms so hands remain attached to the props.",
+      "All arms, hands, violin and bow share torso-root; legs stay in the locomotion frame to allow floor contact.",
+      "Do not animate left/right/top to drive character motion.",
+      "Do not apply CSS transform-origin to the entire character when a joint pivot is intended.",
+      "When replacing only one asset, retain its pivot and coordinate contract."
+    ]
+  },
+  "acceptance_criteria": [
+    "All SVG files parse and use editable vector elements with no embedded raster images or external network dependencies.",
+    "The character is visible on first load in the ready pose.",
+    "Entrance visibly walks in with violin and bow, then raises them into a coherent playing pose.",
+    "Short and long clips are visibly different and can be triggered independently.",
+    "Bow hair intersects the bridge throughout playing; the bow hand remains on the grip and the violin hand stays on the neck.",
+    "No detached joints, arm overextension, clipped props, NaN transforms or duplicate IDs within an instance.",
+    "Long loop endpoints match within numeric tolerance.",
+    "Pause, resume, restart, timeline seeking and reduced-motion behavior work in the preview.",
+    "Verify desktop and narrow layout in an actual browser available to the project.",
+    "Do not claim audio synchronization or integration with the game unless it has actually been implemented and tested."
+  ],
+  "completion_report": [
+    "List changed files and how the game triggers each clip.",
+    "State how it was tested, including browser visual review and remaining limitations.",
+    "Provide a runnable preview and explain how to tune durations without breaking contact constraints."
+  ]
+}

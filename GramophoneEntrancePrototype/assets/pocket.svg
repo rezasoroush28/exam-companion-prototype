@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="655 775 98 190" width="98" height="190" role="img" aria-labelledby="pocket-title" data-pivot-x="713" data-pivot-y="795">
+<title id="pocket-title">Pocket — layered paper gramophone</title>
+<defs><linearGradient id="pocket-gold" x1="0" y1="0" x2="1" y2="0.6" gradientUnits="objectBoundingBox"><stop stop-color="#F1C568"/><stop offset="0.52" stop-color="#D9A23A"/><stop offset="1" stop-color="#B67E2D"/></linearGradient>
+<linearGradient id="pocket-wood" x1="0" y1="0" x2="0.8" y2="1"><stop stop-color="#9A6336"/><stop offset="1" stop-color="#654024"/></linearGradient>
+<linearGradient id="pocket-horn-shade" x1="0" y1="0.8" x2="0.9" y2="0.1"><stop stop-color="#72471C"/><stop offset="0.38" stop-color="#AD7529"/><stop offset="0.72" stop-color="#D9A23A"/><stop offset="1" stop-color="#F1C568"/></linearGradient>
+<linearGradient id="pocket-shoe" x1="0" y1="0" x2="0.3" y2="1"><stop stop-color="#987050"/><stop offset="1" stop-color="#65452F"/></linearGradient></defs><g id="pocket-paper-art">
+<g id="pocket-back">
+<path d="M685 786 L735 801 L708 948 L659 929 Z" fill="#533720" stroke="#3D291C" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" /><path d="M735 801 L745 814 L718 958 L708 948 Z" fill="#9D6D3C" /><path d="M687 792 L730 805" fill="none" stroke="#D6A552" stroke-width="3" stroke-linejoin="round" stroke-linecap="round" />
+</g><g id="pocket-front">
+<path d="M689 805 L736 818 L712 951 L664 934 Z" fill="url(#pocket-wood)" stroke="#54321D" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" /><path d="M695 816 L726 825 L706 940 L674 929 Z" fill="none" stroke="#C8943E" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" /><path d="M680 897 L717 908" fill="none" stroke="#A57948" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round" />
+</g><g id="pocket-flap">
+<path d="M685 787 L737 801 L733 830 L709 843 L679 818 Z" fill="url(#pocket-wood)" stroke="#54321D" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" /><path d="M689 794 L730 806 L726 825 L708 835 L685 815 Z" fill="none" stroke="#D1A252" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" /><ellipse cx="709" cy="826" rx="5" ry="5" fill="url(#pocket-gold)"/>
+</g>
+</g><g id="pivot" data-x="713" data-y="795" style="display:none"><ellipse cx="713" cy="795" rx="2" ry="2" fill="#FF00FF"/></g>
+</svg>
