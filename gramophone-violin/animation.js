@@ -1,7 +1,7 @@
 /* The Little Virtuoso — dependency-free SVG rig. Units: SVG user units; angles: degrees. */
 (function () {
 'use strict';
-const DURATIONS={entrance:4.8,short:1.7,long:8,full:15.3};
+const DURATIONS={entrance:4.8,short:1.7,long:8,full:15.3,frustration:6.6};
 const rad=Math.PI/180, mix=(a,b,t)=>a+(b-a)*t, clamp=(n,a=0,b=1)=>Math.max(a,Math.min(b,n)), ease=t=>{t=clamp(t);return t*t*(3-2*t)}, rot=(p,a)=>[p[0]*Math.cos(a*rad)-p[1]*Math.sin(a*rad),p[0]*Math.sin(a*rad)+p[1]*Math.cos(a*rad)];
 const point=(p,q,a)=>{const z=rot(q,a);return [p[0]+z[0],p[1]+z[1]]};
 class GramophoneViolinPlayer {
@@ -30,6 +30,18 @@ class GramophoneViolinPlayer {
    if(t<2.8){const brake=clamp((t-2.35)/.45);rootX=-1100+(1100/2.575)*(t-.45*(brake**3-.5*brake**4));walk=1-ease(brake);bodyY=15*walk-5*Math.cos(t/.55*Math.PI*4)*walk;bodyAngle=1.7*Math.sin(t/.55*Math.PI*2)*walk;hornAngle=2.5*Math.sin(t/.55*Math.PI*2-.6)*walk;phaseLabel='Walking in';}
    else if(t<3.2){bodyY=-5*Math.sin((t-2.8)/.4*Math.PI);phaseLabel='Finding his footing';}
    else {hornAngle=-2.5*Math.sin(raise*Math.PI);phaseLabel=raise<1?'Lifting the violin':'Ready to play';}
+  }
+  if(phase==='frustration'){
+   // Lower the instrument, exhale, then leave with a slow reversed gait.
+   const slump=ease(t/1.35),leave=clamp((t-2)/4.6);
+   raise=1-slump;hornAngle=28*slump;bodyAngle=2*slump;bodyY=10*slump;
+   rootX=-1200*ease(leave);
+   walk=ease((t-2)/.45)*(1-ease((t-6.1)/.5));
+   if(!this.reducedPerformance){
+    bodyY+=2*Math.sin((t-2)/.8*Math.PI*2)*walk;
+    hornAngle+=1.5*Math.sin((t-2)/.8*Math.PI*2)*walk;
+   }
+   phaseLabel=t<1.35?'Losing heart':t<2?'A defeated pause':t<6.6?'Leaving quietly':'Left the scene';
   }
   if(phase==='short'){
    // Compact stroke and return; zero displacement and velocity at both endpoints.
@@ -61,10 +73,12 @@ class GramophoneViolinPlayer {
   let maxError=0;
   for(const [side,hip,ankle,shift] of [['left',[653,933],[693,1120],0],['right',[441,904],[427,1120],.5]]){
    let x=ankle[0],y=ankle[1],toe=0;
-   if(p.walk>0){const u=((p.t/.55+shift)%1),stance=.64;
+   if(p.walk>0){const gaitTime=p.phase==='frustration'?Math.max(0,p.t-2)/.8:p.t/.55;
+    const u=((gaitTime+shift)%1),stance=.64;
     if(u<stance)x+=mix(70,-70,u/stance)*p.walk;
     else{const s=(u-stance)/(1-stance);x+=mix(-70,70,ease(s))*p.walk;y-=Math.sin(Math.PI*s)*63*p.walk;toe=-18*Math.sin(Math.PI*s)*p.walk;}
    }
+   if(p.phase==='frustration'){x=2*ankle[0]-x;toe=-toe;}
    // A slight crouch keeps the maximum stride within the joint reach.
    const h=world([hip[0],hip[1]+14*p.walk]);const r=this.limb(side+'-thigh',side+'-shin',h,[x,y],114,112,side==='left'?-1:1);
    this.joint(side+'-foot',r.end,toe);maxError=Math.max(maxError,r.reachError);
@@ -92,7 +106,7 @@ class GramophoneViolinPlayer {
  }
  complete(){this.onComplete(this.clip);this.svg.dispatchEvent(new CustomEvent('gramophone:clipcomplete',{detail:{clip:this.clip}}))}
  pause(){this.playing=false;if(this.frame!==null)cancelAnimationFrame(this.frame);this.frame=null;this.previous=null;this.performance=null;this.render()}
- resume(){if(this.playing)return;if(this.time>=DURATIONS[this.clip])return this.play(this.clip);if(this.reduced)return this.play(this.clip);this.playing=true;this.previous=null;this.render();this.frame=requestAnimationFrame(t=>this.tick(t))}
+ resume(){if(this.playing)return;if(this.time>=DURATIONS[this.clip])return this.play(this.clip,null,true);this.reducedPerformance=this.reduced;this.playing=true;this.previous=null;this.render();this.frame=requestAnimationFrame(t=>this.tick(t))}
  seek(seconds){this.pause();this.time=clamp(seconds,0,DURATIONS[this.clip]);this.render()}
  ready(){this.pause();this.reducedPerformance=false;this.clip='entrance';this.time=4.8;this.render()}
  playShortViolinAnimation(schedule){this.play('short',schedule,true)}
@@ -107,9 +121,10 @@ if(svg){
  const label=document.getElementById('phase'),time=document.getElementById('time'),scrub=document.getElementById('scrub'),toggle=document.getElementById('toggle');
  const player=new GramophoneViolinPlayer(svg,{onUpdate:s=>{if(!label)return;label.textContent=s.reduced?(s.reducedPerformance?`Reduced motion · ${s.label}`:'Reduced motion · ready pose (music remains available)'):s.label;time.textContent=`${s.time.toFixed(1)} / ${s.duration.toFixed(1)} s`;scrub.max=s.duration;scrub.value=s.time;toggle.textContent=s.playing?'Pause preview':'Play preview';toggle.setAttribute('aria-label',s.playing?'Pause animation':'Play animation');document.querySelectorAll('[data-clip]').forEach(b=>b.setAttribute('aria-pressed',b.dataset.clip===s.clip));}});
  window.gramophone=player;
- document.querySelectorAll('[data-clip]').forEach(b=>b.addEventListener('click',()=>player.play(b.dataset.clip)));
+ // Clicking a study control explicitly requests motion, including with reduced motion enabled.
+ document.querySelectorAll('[data-clip]').forEach(b=>b.addEventListener('click',()=>player.play(b.dataset.clip,null,true)));
  toggle?.addEventListener('click',()=>player.playing?player.pause():player.resume());
- document.getElementById('restart')?.addEventListener('click',()=>player.play(player.clip));
+ document.getElementById('restart')?.addEventListener('click',()=>player.play(player.clip,null,true));
  document.getElementById('ready')?.addEventListener('click',()=>player.ready());
  scrub?.addEventListener('input',e=>player.seek(Number(e.target.value)));
  document.getElementById('speed')?.addEventListener('change',e=>player.rate=Number(e.target.value));

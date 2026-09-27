@@ -3,20 +3,22 @@
   'use strict';
   const pitchClasses = { C: 0, D: 2, E: 4, F: 5, G: 7, A: 9, B: 11 };
   const VIOLIN_VOICE = Object.freeze({
-    harmonicAmplitudes: [0, 1, .82, .66, .52, .43, .35, .30, .25, .21, .18, .15, .13, .11, .095, .08, .07, .06, .05, .04, .035, .03, .026, .022],
+    // A bowed-string spectrum: strong fundamental, controlled early
+    // harmonics, and a gentle high-frequency taper instead of a sawtooth.
+    harmonicAmplitudes: [0, 1, .55, .34, .22, .15, .09, .055, .035, .02, .014, .01, .007, .005, .0035, .0025],
     bodyPeaks: Object.freeze([
-      Object.freeze({ frequency: 280, gain: 2.5, q: .75 }),
-      Object.freeze({ frequency: 500, gain: 4.2, q: .85 }),
-      Object.freeze({ frequency: 1000, gain: 3.1, q: .9 }),
-      Object.freeze({ frequency: 2000, gain: 2.2, q: .8 }),
-      Object.freeze({ frequency: 2500, gain: 4.8, q: .72 }),
-      Object.freeze({ frequency: 3000, gain: 1.8, q: .8 })
+      Object.freeze({ frequency: 280, gain: 1.8, q: .65 }),
+      Object.freeze({ frequency: 720, gain: 2.1, q: .65 }),
+      Object.freeze({ frequency: 2500, gain: 3.6, q: .6 })
     ]),
     vibratoRate: 5.9,
     vibratoCents: 15.2,
     shortVibratoCents: 5.5,
     bowNoiseCenter: 2900,
-    bowNoiseQ: .75
+    bowNoiseQ: .75,
+    roomSeconds: .26,
+    roomMixShort: .035,
+    roomMixLong: .075
   });
   function noteToFrequency(name) {
     const match = /^([A-G])([#b]?)(-?\d+)$/.exec(name);
@@ -64,8 +66,8 @@
         : { start, end });
       // Measured violin spectra stabilize over the first ~220 ms. Give the
       // sustained chord more time to establish than the detached note.
-      const attack = Math.min(options.sequence ? .07 : options.full ? 0.13 : 0.065, toneDuration / 4);
-      const release = Math.min(options.sequence ? .14 : options.full ? 0.32 : 0.16, toneDuration / 3);
+      const attack = Math.min(options.sequence ? .07 : options.full ? 0.10 : 0.065, toneDuration / 4);
+      const release = Math.min(options.sequence ? .14 : options.full ? 0.28 : 0.16, toneDuration / 3);
       const real = new Float32Array(VIOLIN_VOICE.harmonicAmplitudes.length);
       const imaginary = Float32Array.from(VIOLIN_VOICE.harmonicAmplitudes);
       const wave = context.createPeriodicWave(real, imaginary);
@@ -87,15 +89,30 @@
       compressor.threshold.value = -14; compressor.knee.value = 12; compressor.ratio.value = 3.5; compressor.attack.value = .006; compressor.release.value = .16;
       bodyLowpass.connect(compressor);
       const master = context.createGain();
-      master.gain.value = options.full ? .64 : .8;
+      master.gain.value = options.full ? .52 : .68;
       compressor.connect(master);
+      const room = context.createConvolver();
+      const roomLength = Math.max(1, Math.ceil(VIOLIN_VOICE.roomSeconds * context.sampleRate));
+      const roomBuffer = context.createBuffer(2, roomLength, context.sampleRate);
+      for (let channel = 0; channel < roomBuffer.numberOfChannels; channel++) {
+        const impulse = roomBuffer.getChannelData(channel);
+        for (let i = 0; i < impulse.length; i++) {
+          const progress = i / impulse.length;
+          const seed = Math.sin((i + 1) * (channel + 3) * 12.9898) * 43758.5453;
+          impulse[i] = (seed - Math.floor(seed) - .5) * (1 - progress) ** 2.6;
+        }
+      }
+      room.buffer = roomBuffer;
+      const roomGain = context.createGain();
+      roomGain.gain.value = options.full ? VIOLIN_VOICE.roomMixLong : VIOLIN_VOICE.roomMixShort;
+      bodyLowpass.connect(room).connect(roomGain).connect(master);
       master.connect(context.destination);
-      const nodes = [voiceBus, highpass, ...bodyFilters, bodyLowpass, compressor, master], sources = [];
-      let resolveFinished, remaining = frequencies.length, cleaned = false;
+      const nodes = [voiceBus, highpass, ...bodyFilters, bodyLowpass, compressor, master, room, roomGain], sources = [];
+      let resolveFinished, remaining = frequencies.length, cleaned = false, settled = false, cleanupTimer = null;
       const finished = new Promise(resolve => { resolveFinished = resolve; });
       const phrase = { start, end, notes: [...noteNames], starts: toneWindows.map(tone => tone.start), sequence: Boolean(options.sequence), cancelled: false,
         finished, elapsed: () => Math.max(0, context.currentTime - start), duration,
-        dispose: () => { phrase.cancel(); cleanup(); },
+        dispose: () => { phrase.cancel(); cleanup(true); },
         cancel: () => {
           if (cleaned) return;
           phrase.cancelled = true;
@@ -105,15 +122,26 @@
           master.gain.linearRampToValueAtTime(0, now + 0.018);
           sources.forEach(source => { try { source.stop(now + 0.02); } catch {} });
           // A suspended clock cannot finish a fade or dispatch source endings.
-          if (context.state !== 'running') cleanup();
+          if (context.state !== 'running') cleanup(true);
         }
       };
-      const cleanup = () => {
+      const settle = value => {
+        if (settled) return;
+        settled = true;
+        resolveFinished(value);
+      };
+      const cleanup = (immediate = false) => {
         if (cleaned) return;
+        if (!immediate && !cleanupTimer) {
+          cleanupTimer = setTimeout(() => { cleanupTimer = null; cleanup(true); }, VIOLIN_VOICE.roomSeconds * 1000 + 80);
+          this.active.delete(phrase);
+          return;
+        }
         cleaned = true;
+        if (cleanupTimer) { clearTimeout(cleanupTimer); cleanupTimer = null; }
         nodes.forEach(node => node.disconnect());
         this.active.delete(phrase);
-        resolveFinished(!phrase.cancelled);
+        settle(!phrase.cancelled);
       };
       frequencies.forEach((frequency, index) => {
         const toneStart = toneWindows[index].start, toneEnd = toneWindows[index].end;
@@ -141,17 +169,27 @@
         stringColor.frequency.exponentialRampToValueAtTime(colorOpen, toneStart + Math.min(.18, toneDuration * .3));
         stringColor.frequency.exponentialRampToValueAtTime(colorOpen * .82, toneEnd - release);
         const envelope = context.createGain();
-        const amplitude = options.sequence ? .27 : (options.full ? .29 : .245) / Math.sqrt(frequencies.length);
+        const humanGain = 1 + (index - (frequencies.length - 1) / 2) * .018;
+        const amplitude = humanGain * (options.sequence ? .27 : (options.full ? .29 : .245) / Math.sqrt(frequencies.length));
         envelope.gain.setValueAtTime(0, toneStart);
         envelope.gain.linearRampToValueAtTime(amplitude, toneStart + attack);
         envelope.gain.linearRampToValueAtTime(amplitude * .92, Math.max(toneStart + attack, toneEnd - release));
         envelope.gain.linearRampToValueAtTime(0, toneEnd);
         oscillator.connect(stringColor).connect(envelope).connect(voiceBus);
-        nodes.push(oscillator, vibrato, depth, drift, driftDepth, stringColor, envelope);
-        sources.push(oscillator, vibrato, drift);
+        const companion = context.createOscillator();
+        companion.setPeriodicWave(wave);
+        companion.frequency.value = frequency * (1 + (index % 2 ? -.0009 : .0007));
+        const companionGain = context.createGain();
+        companionGain.gain.setValueAtTime(0, toneStart);
+        companionGain.gain.linearRampToValueAtTime(amplitude * .045, toneStart + attack);
+        companionGain.gain.linearRampToValueAtTime(amplitude * .041, Math.max(toneStart + attack, toneEnd - release));
+        companionGain.gain.linearRampToValueAtTime(0, toneEnd);
+        companion.connect(stringColor).connect(companionGain).connect(voiceBus);
+        nodes.push(oscillator, vibrato, depth, drift, driftDepth, stringColor, envelope, companion, companionGain);
+        sources.push(oscillator, vibrato, drift, companion);
         oscillator.onended = () => { if (--remaining === 0) cleanup(); };
-        oscillator.start(toneStart); vibrato.start(toneStart); drift.start(toneStart);
-        oscillator.stop(toneEnd); vibrato.stop(toneEnd); drift.stop(toneEnd);
+        oscillator.start(toneStart); vibrato.start(toneStart); drift.start(toneStart); companion.start(toneStart);
+        oscillator.stop(toneEnd); vibrato.stop(toneEnd); drift.stop(toneEnd); companion.stop(toneEnd);
       });
       // One filtered friction layer represents bow hair, shared by all tones
       // so a chord still sounds like one instrument gesture.

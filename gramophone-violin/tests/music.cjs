@@ -156,7 +156,9 @@ const { chromium } = require(process.env.PLAYWRIGHT_PATH || '../../ExamCompanion
   });
   console.log('AUDIO CHECK', audioCheck);
   assert.ok(audioCheck.middle>.01 && audioCheck.peak<1);
-  assert.equal(audioCheck.tail,0);assert.equal(audioCheck.frequency,440);
+  // The violin voice now has a deliberately quiet room tail; allow the
+  // convolver's floating-point residue while still requiring near silence.
+  assert.ok(audioCheck.tail<.00001);assert.equal(audioCheck.frequency,440);
   assert.ok(audioCheck.harmonicRatio>.45,'bowed voice retains strong overtones');
   assert.ok(audioCheck.harmonicCentroid>750,'body-filtered voice remains harmonically rich');
   assert.equal(new Set(audioCheck.starts).size,3);

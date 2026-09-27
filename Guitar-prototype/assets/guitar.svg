@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-180 -125 510 260" role="img" aria-label="Handcrafted acoustic guitar with six strings"><g stroke="#593823" stroke-linejoin="round">
+<path d="M78-33 C44-100 8-51-23-76 C-115-144-177-68-133-5 C-165 69-80 120-19 69 C13 43 51 83 81 34 L96 26 L96-28Z" fill="#754128" transform="translate(5 9)" stroke-width="4"/>
+<path d="M78-33 C44-100 8-51-23-76 C-115-144-177-68-133-5 C-165 69-80 120-19 69 C13 43 51 83 81 34 L96 26 L96-28Z" fill="#dda65f" stroke-width="4"/>
+<path d="M-126-42 Q-139-101-62-87 L-25-68 Q15-43 43-60 L68-32 L-43-31Z" fill="#f2cc8a" stroke="none"/>
+<path d="M-129 12 Q-131 77-73 87 Q-29 72-12 52 L63 43 L76 24 L-51 40Z" fill="#bf7c40" stroke="none"/>
+<path d="M-105-52 Q-83-70-57-53 M-116 37 Q-93 67-64 58 M-111 46 Q-93 74-72 68" fill="none" stroke="#f4d49b" stroke-width="2"/>
+<circle cx="13" r="34" fill="#754529" stroke="#fbe3b0" stroke-width="4"/>
+<circle cx="13" r="27" fill="#302b26" stroke="#bd8550" stroke-width="3"/>
+<path d="M75-17 L238-13 L238 13 L75 17Z" fill="#533c2e" stroke-width="3"/>
+<path d="M237-17 L291-22 L309-12 L306 15 L242 18Z" fill="#b88045" stroke-width="3"/>
+<path d="M251-18 V-28 M251 17 V27" stroke-width="4"/><ellipse cx="251" cy="-29" rx="8" ry="5" fill="#efcc82"/><ellipse cx="251" cy="29" rx="8" ry="5" fill="#efcc82"/><path d="M272-18 V-28 M272 17 V27" stroke-width="4"/><ellipse cx="272" cy="-29" rx="8" ry="5" fill="#efcc82"/><ellipse cx="272" cy="29" rx="8" ry="5" fill="#efcc82"/><path d="M291-18 V-28 M291 17 V27" stroke-width="4"/><ellipse cx="291" cy="-29" rx="8" ry="5" fill="#efcc82"/><ellipse cx="291" cy="29" rx="8" ry="5" fill="#efcc82"/>
+<path d="M91-15 V15" stroke="#bca98a" stroke-width="2"/><path d="M115-15 V15" stroke="#bca98a" stroke-width="2"/><path d="M138-15 V15" stroke="#bca98a" stroke-width="2"/><path d="M160-15 V15" stroke="#bca98a" stroke-width="2"/><path d="M180-15 V15" stroke="#bca98a" stroke-width="2"/><path d="M198-15 V15" stroke="#bca98a" stroke-width="2"/><path d="M215-15 V15" stroke="#bca98a" stroke-width="2"/><path d="M230-15 V15" stroke="#bca98a" stroke-width="2"/>
+<path d="M-73-28 H-53 V28 H-73Z" fill="#694532" stroke-width="2"/>
+<path d="M-58-18 V18" stroke="#f9e4b6" stroke-width="3"/>
+<path d="M-58 -10 H295" stroke="#ead7ab" stroke-width="1.5" fill="none"/><path d="M-58 -6 H295" stroke="#ead7ab" stroke-width="1.34" fill="none"/><path d="M-58 -2 H295" stroke="#ead7ab" stroke-width="1.18" fill="none"/><path d="M-58 2 H295" stroke="#fff0cf" stroke-width="1.02" fill="none"/><path d="M-58 6 H295" stroke="#fff0cf" stroke-width="0.86" fill="none"/><path d="M-58 10 H295" stroke="#fff0cf" stroke-width="0.7" fill="none"/>
+<circle cx="138" r="2.3" fill="#e9d2a3"/><circle cx="180" r="2.3" fill="#e9d2a3"/><circle cx="215" r="2.3" fill="#e9d2a3"/>
+</g></svg>
